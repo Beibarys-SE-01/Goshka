@@ -172,12 +172,13 @@ func (l *Level6) NextLevel(level Level) {
 }
 
 type Level7 struct {
-	Level2 Level
 }
 
 func (l *Level7) LevelUp(c iCharacter, k []Kingdom) bool {
 	fmt.Println("Level 7")
 	fmt.Println("There are 5 houses in five different colors. In each house lives a person with a different nationality. These five owners drink a certain type of beverage, smoke a certain brand of cigar and keep a certain pet. No owners have the same pet, smoke the same brand of cigar or drink the same beverage.")
+	fmt.Println("The question is, who owns the fish?")
+	fmt.Println("The Brit lives in the red house\nThe Swede keeps dogs as pets\nThe Dane drinks tea\nThe green house is on the left of the white house\nThe green house’s owner drinks coffee\nThe person who smokes Pall Mall rears birds\nThe owner of the yellow house smokes Dunhill\nThe man living in the center house drinks milk\nThe Norwegian lives in the first house\nThe man who smokes blends lives next to the one who keeps cats\nThe man who keeps horses lives next to the man who smokes Dunhill\nThe owner who smokes BlueMaster drinks beer\nThe German smokes Prince\nThe Norwegian lives next to the blue house\nThe man who smokes blend has a neighbor who drinks water")
 	var x string
 	fmt.Scan(&x)
 	for !strings.EqualFold(x, "German") {
