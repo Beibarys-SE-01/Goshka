@@ -91,6 +91,9 @@ type BecomeNobody struct {
 	char iCharacter
 }
 
+func (c *BecomeNobody) GetCharacter() *Character {
+	return c.char.GetCharacter()
+}
 func (c *BecomeNobody) Upgrade() {
 	c.char.GetCharacter().Power += 50
 	c.char.GetCharacter().Dexterity += 50
