@@ -51,7 +51,7 @@ func (n *SeventhKingdom) GetKingdom() string {
 
 //Second hierarchy
 type iCharacter interface {
-	//Attack()
+	Attack()
 	Protect()
 	Upgrade()
 	GetCharacter() *Character
