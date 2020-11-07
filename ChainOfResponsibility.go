@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 	"time"
 )
 
@@ -17,11 +18,11 @@ type Level1 struct {
 func (l *Level1) LevelUp(c iCharacter, k []Kingdom) bool {
 	startTime := time.Now()
 	fmt.Println("Level 1")
-	fmt.Println("загадка 1")
+	fmt.Println("I am purple, yellow, red, and green\nThe King cannot reach me and neither can the Queen.\nI show my colors after the rain\nAnd only when the sun comes out again.")
 	var x string
 	fmt.Scan(&x)
 	duration := time.Since(startTime)
-	for !CheckAnswer(x, "correctAnswer") {
+	for !strings.EqualFold(x, "Rainbow") {
 		fmt.Printf("Oops your answer is wrong. %v has been attacked your Kingdom.\n -20points from your dexterity\n", k[0].GetKingdom())
 		c.GetCharacter().Dexterity -= 20
 		if !c.GetCharacter().CheckSkills() {
@@ -47,11 +48,11 @@ type Level2 struct {
 func (l *Level2) LevelUp(c iCharacter, k []Kingdom) bool {
 	startTime := time.Now()
 	fmt.Println("Level 2")
-	fmt.Println("загадка 2")
+	fmt.Println("What is full of holes but still holds water?")
 	var x string
 	fmt.Scan(&x)
 	duration := time.Since(startTime)
-	for !CheckAnswer(x, "correctAnswer") {
+	for !strings.EqualFold(x, "Sponge") {
 		fmt.Printf("Oops your answer is wrong. %v has been attacked your Kingdom.\n -20points from your protection\n", k[0].GetKingdom())
 		c.GetCharacter().Protection -= 20
 		if !c.GetCharacter().CheckSkills() {
@@ -70,16 +71,16 @@ func (l *Level2) NextLevel(level Level) {
 	l.Level3 = level
 }
 
-/*type Level3 struct {
+type Level3 struct {
 	Level4 Level
 }
 
 func (l *Level3) LevelUp(c iCharacter, k []Kingdom) bool {
 	fmt.Println("Level 3")
-	fmt.Println("загадка 3")
+	fmt.Println("What gets wet while drying?")
 	var x string
 	fmt.Scan(&x)
-	for !CheckAnswer(x, "correctAnswer") {
+	for !strings.EqualFold(x, "Towel") {
 		fmt.Printf("Oops your answer is wrong. %v has been attacked your Kingdom.\n -20points from your reaction\n", k[0].GetKingdom())
 		c.GetCharacter().Reaction -= 20
 		if !c.GetCharacter().CheckSkills() {
@@ -101,10 +102,10 @@ type Level4 struct {
 
 func (l *Level4) LevelUp(c iCharacter, k []Kingdom) bool {
 	fmt.Println("Level 4")
-	fmt.Println("загадка 4")
+	fmt.Println("What gets bigger when more is taken away?")
 	var x string
 	fmt.Scan(&x)
-	for !CheckAnswer(x, "correctAnswer") {
+	for !strings.EqualFold(x, "Hole") {
 		fmt.Printf("Oops your answer is wrong. %v has been attacked your Kingdom.\n -20points from your power\n", k[0].GetKingdom())
 		c.GetCharacter().Power -= 20
 		if !c.GetCharacter().CheckSkills() {
@@ -125,11 +126,11 @@ type Level5 struct {
 }
 
 func (l *Level5) LevelUp(c iCharacter, k []Kingdom) bool {
-	fmt.Println("Level 1")
-	fmt.Println("загадка 1")
+	fmt.Println("Level 5")
+	fmt.Println("If you’ve got me, you want to share me; if you share me, you haven’t kept me. What am I?")
 	var x string
 	fmt.Scan(&x)
-	for !CheckAnswer(x, "correctAnswer") {
+	for !strings.EqualFold(x, "Secret") {
 		fmt.Printf("Oops your answer is wrong. %v has been attacked your Kingdom.\n -20points from your dexterity\n", k[0].GetKingdom())
 		c.GetCharacter().Dexterity -= 20
 		if !c.GetCharacter().CheckSkills() {
@@ -150,11 +151,11 @@ type Level6 struct {
 }
 
 func (l *Level6) LevelUp(c iCharacter, k []Kingdom) bool {
-	fmt.Println("Level 1")
-	fmt.Println("загадка 1")
+	fmt.Println("Level 6")
+	fmt.Println("You have me today,\n\nTomorrow you'll have more;\n\nAs your time passes,\nI'm not easy to store;\nI don't take up space,\nBut I'm only in one place;\nI am what you saw,\nBut not what you see.\nWhat am I?")
 	var x string
 	fmt.Scan(&x)
-	for !CheckAnswer(x, "correctAnswer") {
+	for !strings.EqualFold(x, "Memory") {
 		fmt.Printf("Oops your answer is wrong. %v has been attacked your Kingdom.\n -20points from your dexterity\n", k[0].GetKingdom())
 		c.GetCharacter().Dexterity -= 20
 		if !c.GetCharacter().CheckSkills() {
@@ -175,11 +176,11 @@ type Level7 struct {
 }
 
 func (l *Level7) LevelUp(c iCharacter, k []Kingdom) bool {
-	fmt.Println("Level 1")
-	fmt.Println("загадка 1")
+	fmt.Println("Level 7")
+	fmt.Println("There are 5 houses in five different colors. In each house lives a person with a different nationality. These five owners drink a certain type of beverage, smoke a certain brand of cigar and keep a certain pet. No owners have the same pet, smoke the same brand of cigar or drink the same beverage.")
 	var x string
 	fmt.Scan(&x)
-	for !CheckAnswer(x, "correctAnswer") {
+	for !strings.EqualFold(x, "German") {
 		fmt.Printf("Oops your answer is wrong. %v has been attacked your Kingdom.\n -20points from your dexterity\n", k[0].GetKingdom())
 		c.GetCharacter().Dexterity -= 20
 		if !c.GetCharacter().CheckSkills() {
@@ -193,11 +194,4 @@ func (l *Level7) LevelUp(c iCharacter, k []Kingdom) bool {
 
 func (l *Level7) NextLevel(level Level) {
 
-}*/
-
-func CheckAnswer(string1 string, string2 string) bool {
-	if string2 == string1 {
-		return true
-	}
-	return false
 }
