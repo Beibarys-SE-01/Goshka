@@ -1,0 +1,52 @@
+Index: Bridge.go
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package main\r\n\r\nimport \"fmt\"\r\n\r\n//First hierarchy\r\ntype Kingdom interface {\r\n\tGetKingdom() string\r\n}\r\n\r\ntype FirstKingdom struct{}\r\n\r\nfunc (n *FirstKingdom) GetKingdom() string {\r\n\treturn \"The North\"\r\n}\r\n\r\ntype SecondKingdom struct{}\r\n\r\nfunc (n *SecondKingdom) GetKingdom() string {\r\n\treturn \"The Kingdom of Mountain and Vale\"\r\n}\r\n\r\ntype ThirdKingdom struct{}\r\n\r\nfunc (n *ThirdKingdom) GetKingdom() string {\r\n\treturn \"Kingdom of the Isles and Rivers\"\r\n}\r\n\r\ntype FourthKingdom struct{}\r\n\r\nfunc (n *FourthKingdom) GetKingdom() string {\r\n\treturn \"The Kingdom of the Rock\"\r\n}\r\n\r\ntype FifthKingdom struct{}\r\n\r\nfunc (n *FifthKingdom) GetKingdom() string {\r\n\treturn \"The Kingdom of the Stormlands\"\r\n}\r\n\r\ntype SixthKingdom struct{}\r\n\r\nfunc (n *SixthKingdom) GetKingdom() string {\r\n\treturn \"The Kingdom of the Reach\"\r\n}\r\n\r\ntype SeventhKingdom struct{}\r\n\r\nfunc (n *SeventhKingdom) GetKingdom() string {\r\n\treturn \"The Principality of Dorne\"\r\n}\r\n\r\n//Second hierarchy\r\ntype iCharacter interface {\r\n\t//Attack()\r\n\tProtect()\r\n\tUpgrade()\r\n\tGetCharacter() *Character\r\n}\r\n\r\ntype King struct {\r\n\tc *Character\r\n}\r\n\r\nfunc (k *King) Build(name string, kingdom Kingdom) {\r\n\tc := NewCharBuilder()\r\n\tc.Name(name).\r\n\t\tLiveIn(kingdom).\r\n\t\tWithPower(100).\r\n\t\tWithDexterity(70).\r\n\t\tWithProtection(80).\r\n\t\tWithReaction(60)\r\n\tk.c = c.Build()\r\n}\r\n\r\nfunc (k *King) GetCharacter() *Character {\r\n\treturn k.c\r\n}\r\n\r\nfunc (k *King) Upgrade() {}\r\n\r\nfunc (k *King) Protect() {\r\n\tfmt.Println(\"You will regret that you were born in this world\")\r\n}\r\n\r\nfunc (k *King) Attack() {\r\n\tfmt.Println(\"This land is gonna be mine \")\r\n}\r\n\r\ntype Queen struct {\r\n\tc *Character\r\n}\r\n\r\nfunc (k *Queen) Build(name string, kingdom Kingdom) {\r\n\tc := NewCharBuilder()\r\n\tc.Name(name).\r\n\t\tLiveIn(kingdom).\r\n\t\tWithPower(80).\r\n\t\tWithDexterity(80).\r\n\t\tWithProtection(60).\r\n\t\tWithReaction(100)\r\n\tk.c = c.Build()\r\n}\r\n\r\nfunc (k *Queen) GetCharacter() *Character {\r\n\treturn k.c\r\n}\r\n\r\nfunc (k *Queen) Upgrade() {}\r\n\r\nfunc (k *Queen) Protect() {\r\n\tfmt.Println(\"GIVE ME MY ARMOR, I'm going to protect my Kingdom\")\r\n}\r\n\r\nfunc (k *Queen) Attack() {\r\n\tfmt.Printf(\"Let's make %v Great again\\n\", k.c.Kingdom.GetKingdom())\r\n}\r\n\r\ntype Knight struct {\r\n\tc *Character\r\n}\r\n\r\nfunc (k *Knight) Build(name string, kingdom Kingdom) {\r\n\tc := NewCharBuilder()\r\n\tc.Name(name).\r\n\t\tLiveIn(kingdom).\r\n\t\tWithPower(50).\r\n\t\tWithDexterity(90).\r\n\t\tWithProtection(100).\r\n\t\tWithReaction(90)\r\n\tk.c = c.Build()\r\n}\r\n\r\nfunc (k *Knight) GetCharacter() *Character {\r\n\treturn k.c\r\n}\r\n\r\nfunc (k *Knight) Upgrade() {}\r\n\r\nfunc (k *Knight) Protect() {\r\n\tfmt.Printf(\"God save %v\\n\", k.c.Kingdom.GetKingdom())\r\n}\r\n\r\nfunc (k *Knight) Attack() {\r\n\tfmt.Printf(\"God bless %v\\n\", k.c.Kingdom.GetKingdom())\r\n}\r\n\r\ntype HandOfKing struct {\r\n\tc *Character\r\n}\r\n\r\nfunc (k *HandOfKing) Build(name string, kingdom Kingdom) {\r\n\tc := NewCharBuilder()\r\n\tc.Name(name).\r\n\t\tLiveIn(kingdom).\r\n\t\tWithPower(70).\r\n\t\tWithDexterity(100).\r\n\t\tWithProtection(70).\r\n\t\tWithReaction(80)\r\n\tk.c = c.Build()\r\n}\r\n\r\nfunc (k *HandOfKing) GetCharacter() *Character {\r\n\treturn k.c\r\n}\r\n\r\nfunc (k *HandOfKing) Upgrade() {}\r\n\r\nfunc (k *HandOfKing) Protect() {\r\n\tfmt.Println(\"This strategy is the best for protection. Let's go my friends\")\r\n}\r\n\r\nfunc (k *HandOfKing) Attack() {\r\n\tfmt.Println(\"Now we have enough power to attack other Kingdom \")\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Bridge.go	(revision 5d819015823939d42e3642b0372de3c6d27d083a)
++++ Bridge.go	(date 1604757676801)
+@@ -51,7 +51,7 @@
+ 
+ //Second hierarchy
+ type iCharacter interface {
+-	//Attack()
++	Attack()
+ 	Protect()
+ 	Upgrade()
+ 	GetCharacter() *Character
+Index: Main.go
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package main\r\n\r\nimport \"fmt\"\r\n\r\nfunc main() {\r\n\tkingdom := &FirstKingdom{}\r\n\tk := &King{}\r\n\tk.Build(\"John Snow\", kingdom)\r\n\r\n\tsl := []Kingdom{&SecondKingdom{}, &ThirdKingdom{}}\r\n\ts := &Level2{}\r\n\tstart := &Level1{}\r\n\tstart.NextLevel(s)\r\n\tif start.LevelUp(k, sl) {\r\n\t\tfmt.Println(\"Congratulations you are winner\")\r\n\t} else {\r\n\t\tfmt.Println(\"Game over. You are dead\")\r\n\t}\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Main.go	(revision 5b46cef594f1c1533ba397ccdc7f30c5cb038f28)
++++ Main.go	(date 1604752566145)
+@@ -1,12 +1,14 @@
+ package main
+ 
+-import "fmt"
++import (
++	"fmt"
++	"strings"
++)
+ 
+ func main() {
+ 	kingdom := &FirstKingdom{}
+ 	k := &King{}
+ 	k.Build("John Snow", kingdom)
+-
+ 	sl := []Kingdom{&SecondKingdom{}, &ThirdKingdom{}}
+ 	s := &Level2{}
+ 	start := &Level1{}
+@@ -16,4 +18,7 @@
+ 	} else {
+ 		fmt.Println("Game over. You are dead")
+ 	}
++	c := "Rainbow"
++	v := "rainbow"
++	fmt.Println(strings.EqualFold(c, v))
+ }
