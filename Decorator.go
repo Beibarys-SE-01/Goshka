@@ -14,7 +14,14 @@ func (c *CharWithKnife) Upgrade() {
 func (c *CharWithKnife) GetCharacter() *Character {
 	return c.char.GetCharacter()
 }
+func (c *CharWithKnife) Protect() {
+	c.char.Protect()
+}
 
+func (c *CharWithKnife) Attack() {
+	c.char.Attack()
+	fmt.Println("You are attacking with knife")
+}
 type CharWithShield struct {
 	char iCharacter
 }
@@ -26,6 +33,15 @@ func (c *CharWithShield) Upgrade() {
 
 func (c *CharWithShield) GetCharacter() *Character {
 	return c.char.GetCharacter()
+}
+
+func (c *CharWithShield) Protect() {
+	c.char.Protect()
+	fmt.Println("You are protecting with shield")
+}
+
+func (c *CharWithShield) Attack() {
+	c.char.Attack()
 }
 
 type CharWithPotion struct {
@@ -41,33 +57,34 @@ func (c *CharWithPotion) GetCharacter() *Character {
 	return c.char.GetCharacter()
 }
 
+func (c *CharWithPotion) Protect() {
+	c.char.Protect()
+}
+
+func (c *CharWithPotion) Attack() {
+	c.char.Attack()
+	fmt.Println("Wow you have a good reaction")
+}
 type CharWithDragon struct {
 	char iCharacter
 }
 
 func (c *CharWithDragon) Upgrade() {
 	c.char.GetCharacter().Power += 50
-	fmt.Println("Now you have Dragon in your arsenal. Your protection is ", c.char.GetCharacter().Power)
+	fmt.Println("Now you have Dragon in your arsenal. Your power is ", c.char.GetCharacter().Power)
 }
 
 func (c *CharWithDragon) GetCharacter() *Character {
 	return c.char.GetCharacter()
 }
 
-type CharWithHelp struct {
-	char iCharacter
+func (c *CharWithDragon) Protect() {
+	c.char.Protect()
+	fmt.Println("Your Dragon save your life")
 }
 
-func (c *CharWithHelp) Upgrade() {
-	fmt.Println("Здесь будет подсказка")
-}
-
-type CharWithTime struct {
-	char iCharacter
-}
-
-func (c *CharWithTime) Upgrade() {
-	fmt.Println("Здесь будет time")
+func (c *CharWithDragon) Attack() {
+	c.char.Attack()
 }
 
 type BecomeNobody struct {
@@ -80,4 +97,11 @@ func (c *BecomeNobody) Upgrade() {
 	c.char.GetCharacter().Reaction += 50
 	c.char.GetCharacter().Protection += 50
 	fmt.Println("You became nobody:)")
+}
+func (c *BecomeNobody) Protect() {
+	fmt.Println("Your skills help you to pretend White Walker")
+}
+
+func (c *BecomeNobody) Attack() {
+	fmt.Println("Wow you kill White Walker")
 }
