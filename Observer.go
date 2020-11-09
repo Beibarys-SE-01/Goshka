@@ -8,16 +8,15 @@ type Subject interface {
 	notifyAll()
 }
 
-type Rating struct {
+type listOfWinners struct {
 	subscribers []Observer
-	list        []string
 }
 
-func (c *Rating) register(observer Observer) {
+func (c *listOfWinners) register(observer Observer) {
 	c.subscribers = append(c.subscribers, observer)
 }
 
-func (c *Rating) unregister(observer Observer) {
+func (c *listOfWinners) unregister(observer Observer) {
 	for i, sub := range c.subscribers {
 		if sub == observer {
 			c.subscribers = removeFromSlice(c.subscribers, i)
@@ -30,24 +29,10 @@ func removeFromSlice(s []Observer, i int) []Observer {
 	return s[:len(s)-1]
 }
 
-func (c *Rating) notifyAll() {
+func (c *listOfWinners) notifyAll(ch iCharacter) {
 	for _, observer := range c.subscribers {
-		observer.update(c.list)
+		observer.update(ch)
 	}
-}
-
-func (c *Rating) addNewChar(name string) {
-	c.list = append(c.list, name)
-	c.notifyAll()
-}
-
-func (c *Rating) removeChar(name string) {
-	for i, nameOfmovie := range c.list {
-		if nameOfmovie == name {
-			c.list = remove(c.list, i)
-		}
-	}
-	c.notifyAll()
 }
 
 func remove(s []string, i int) []string {
@@ -56,21 +41,10 @@ func remove(s []string, i int) []string {
 }
 
 type Observer interface {
-	update([]string)
+	update(ch iCharacter)
 }
 
-func (p *King) update(list []string) {
-	fmt.Println("Hello,", p.GetCharacter().Name)
-	fmt.Println("We have new character in  game:")
-	for i, p := range list {
-		fmt.Println(i, p)
-	}
-}
-
-func (p *Queen) update(list []string) {
-	fmt.Println("Hello,", p.GetCharacter().Name)
-	fmt.Println("We have new character in the game:")
-	for i, p := range list {
-		fmt.Println(i, p)
-	}
+func (p *Character) update(ch iCharacter) {
+	fmt.Println("Hello,", p.Name)
+	fmt.Printf("We have new character who win the game, %v from %v \n", ch.GetCharacter().Name, ch.GetCharacter().Kingdom.GetKingdom())
 }

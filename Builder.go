@@ -23,7 +23,6 @@ func (b *CharBuilder) Name(name string) *CharBuilder {
 
 func (b *CharBuilder) LiveIn(k Kingdom) *CharBuilder {
 	b.c.Kingdom = k
-	fmt.Println(b.c.Kingdom.GetKingdom())
 	return b
 }
 
