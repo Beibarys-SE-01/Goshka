@@ -1,9 +1,13 @@
 package main
 
-import "fmt"
+//import "fmt"
 
 func main() {
-	listOfWinners := listOfWinners{subscribers: []Observer{}}
+	facade := newGameFacade()
+	facade.createCharacter()
+	facade.startGame(facade.createLevels())
+
+	/*listOfWinners := listOfWinners{subscribers: []Observer{}}
 
 	listOfWinners.register(Build("John Snow"))
 	listOfWinners.register(Build("Tomiris"))
@@ -74,7 +78,7 @@ func main() {
 		listOfWinners.notifyAll(char)
 	} else {
 		fmt.Println("\nGame over. You are dead")
-	}
+	}*/
 }
 
 

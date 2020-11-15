@@ -46,5 +46,5 @@ type Observer interface {
 
 func (p *Character) update(ch iCharacter) {
 	fmt.Println("Hello,", p.Name)
-	fmt.Printf("We have new character who win the game, %v from %v \n", ch.GetCharacter().Name, ch.GetCharacter().Kingdom.GetKingdom())
+	fmt.Printf("We have new character who win the game, %v from %v \n", ch.GetCharacter().Name, ch.Kingdom().GetKingdom())
 }
