@@ -17,7 +17,7 @@ type Level1 struct {
 func (l *Level1) LevelUp(c iCharacter, k []Kingdom) bool {
 	c.Upgrade()
 	fmt.Println("Level 1")
-	fmt.Printf("%v vs %v\n", k[0].GetKingdom(), c.GetCharacter().Kingdom.GetKingdom())
+	fmt.Printf("%v vs %v\n", k[0].GetKingdom(), c.Kingdom().GetKingdom())
 	a := choose()
 	fmt.Println("I am purple, yellow, red, and green\nThe King cannot reach me and neither can the Queen.\nI show my colors after the rain\nAnd only when the sun comes out again.")
 	var x string
@@ -50,7 +50,7 @@ type Level2 struct {
 func (l *Level2) LevelUp(c iCharacter, k []Kingdom) bool {
 	c.Upgrade()
 	fmt.Println("Level 2")
-	fmt.Printf("%v vs %v\n", k[1].GetKingdom(), c.GetCharacter().Kingdom.GetKingdom())
+	fmt.Printf("%v vs %v\n", k[1].GetKingdom(), c.Kingdom().GetKingdom())
 	a := choose()
 	fmt.Println("What is full of holes but still holds water?")
 	var x string
@@ -83,7 +83,7 @@ type Level3 struct {
 func (l *Level3) LevelUp(c iCharacter, k []Kingdom) bool {
 	c.Upgrade()
 	fmt.Println("Level 3")
-	fmt.Printf("%v vs %v\n", k[2].GetKingdom(), c.GetCharacter().Kingdom.GetKingdom())
+	fmt.Printf("%v vs %v\n", k[2].GetKingdom(), c.Kingdom().GetKingdom())
 	a := choose()
 	fmt.Println("What gets wet while drying?")
 	var x string
@@ -116,7 +116,7 @@ type Level4 struct {
 func (l *Level4) LevelUp(c iCharacter, k []Kingdom) bool {
 	c.Upgrade()
 	fmt.Println("Level 4")
-	fmt.Printf("%v vs %v\n", k[3].GetKingdom(), c.GetCharacter().Kingdom.GetKingdom())
+	fmt.Printf("%v vs %v\n", k[3].GetKingdom(), c.Kingdom().GetKingdom())
 	a := choose()
 	fmt.Println("What gets bigger when more is taken away?")
 	var x string
@@ -149,7 +149,7 @@ type Level5 struct {
 func (l *Level5) LevelUp(c iCharacter, k []Kingdom) bool {
 	c.Upgrade()
 	fmt.Println("Level 5")
-	fmt.Printf("%v vs %v\n", k[4].GetKingdom(), c.GetCharacter().Kingdom.GetKingdom())
+	fmt.Printf("%v vs %v\n", k[4].GetKingdom(), c.Kingdom().GetKingdom())
 	a := choose()
 	fmt.Println("If you’ve got me, you want to share me; if you share me, you haven’t kept me. What am I?")
 	var x string
@@ -183,7 +183,7 @@ type Level6 struct {
 
 func (l *Level6) LevelUp(c iCharacter, k []Kingdom) bool {
 	fmt.Println("Level 6")
-	fmt.Printf("%v vs %v\n", k[5].GetKingdom(), c.GetCharacter().Kingdom.GetKingdom())
+	fmt.Printf("%v vs %v\n", k[5].GetKingdom(), c.Kingdom().GetKingdom())
 	a := choose()
 	fmt.Println("You have me today,\n\nTomorrow you'll have more;\n\nAs your time passes,\nI'm not easy to store;\nI don't take up space,\nBut I'm only in one place;\nI am what you saw,\nBut not what you see.\nWhat am I?")
 	var x string
@@ -217,7 +217,7 @@ type Level7 struct {
 func (l *Level7) LevelUp(c iCharacter, k []Kingdom) bool {
 	c.Upgrade()
 	fmt.Println("Level 7")
-	fmt.Printf("White Walker vs %v\n", c.GetCharacter().Kingdom.GetKingdom())
+	fmt.Printf("White Walker vs %v\n", c.Kingdom().GetKingdom())
 	a := choose()
 	fmt.Println("There are 5 houses in five different colors. In each house lives a person with a different nationality. These five owners drink a certain type of beverage, smoke a certain brand of cigar and keep a certain pet. No owners have the same pet, smoke the same brand of cigar or drink the same beverage.")
 	fmt.Println("The question is, who owns the fish?")

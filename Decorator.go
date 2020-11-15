@@ -14,6 +14,9 @@ func (c *CharWithKnife) Upgrade() {
 func (c *CharWithKnife) GetCharacter() *Character {
 	return c.char.GetCharacter()
 }
+func (c *CharWithKnife) Kingdom() Kingdom {
+	return c.char.Kingdom()
+}
 func (c *CharWithKnife) Protect() {
 	c.char.Protect()
 }
@@ -30,7 +33,9 @@ func (c *CharWithShield) Upgrade() {
 	c.char.GetCharacter().Protection += 15
 	fmt.Println("Now you have Shield in your arsenal. Your protection is ", c.char.GetCharacter().Protection)
 }
-
+func (c *CharWithShield) Kingdom() Kingdom {
+	return c.char.Kingdom()
+}
 func (c *CharWithShield) GetCharacter() *Character {
 	return c.char.GetCharacter()
 }
@@ -52,7 +57,9 @@ func (c *CharWithPotion) Upgrade() {
 	c.char.GetCharacter().Reaction += 20
 	fmt.Println("Now you have Potion in your arsenal. Your reaction is ", c.char.GetCharacter().Reaction)
 }
-
+func (c *CharWithPotion) Kingdom() Kingdom {
+	return c.char.Kingdom()
+}
 func (c *CharWithPotion) GetCharacter() *Character {
 	return c.char.GetCharacter()
 }
@@ -73,7 +80,9 @@ func (c *CharWithDragon) Upgrade() {
 	c.char.GetCharacter().Power += 50
 	fmt.Println("Now you have Dragon in your arsenal. Your power is ", c.char.GetCharacter().Power)
 }
-
+func (c *CharWithDragon) Kingdom() Kingdom {
+	return c.char.Kingdom()
+}
 func (c *CharWithDragon) GetCharacter() *Character {
 	return c.char.GetCharacter()
 }
@@ -93,6 +102,9 @@ type BecomeNobody struct {
 
 func (c *BecomeNobody) GetCharacter() *Character {
 	return c.char.GetCharacter()
+}
+func (c *BecomeNobody) Kingdom() Kingdom {
+	return c.char.Kingdom()
 }
 func (c *BecomeNobody) Upgrade() {
 	c.char.GetCharacter().Power += 50

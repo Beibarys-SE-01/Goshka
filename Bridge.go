@@ -51,6 +51,7 @@ func (n *SeventhKingdom) GetKingdom() string {
 
 //Second hierarchy
 type iCharacter interface {
+	Kingdom() Kingdom
 	Attack()
 	Protect()
 	Upgrade()
@@ -59,8 +60,12 @@ type iCharacter interface {
 
 type King struct {
 	c *Character
+	k Kingdom
 }
 
+func (k *King) Kingdom() Kingdom {
+	return k.k
+}
 
 func (k *King) GetCharacter() *Character {
 	return k.c
@@ -85,8 +90,12 @@ func (k *King) Attack() {
 
 type Queen struct {
 	c *Character
+	k Kingdom
 }
 
+func (k *Queen) Kingdom() Kingdom {
+	return k.k
+}
 
 func (k *Queen) GetCharacter() *Character {
 	return k.c
@@ -106,11 +115,16 @@ func (k *Queen) Protect() {
 }
 
 func (k *Queen) Attack() {
-	fmt.Printf("Let's make %v Great again - Said Queen and attack\n", k.c.Kingdom.GetKingdom())
+	fmt.Printf("Let's make %v Great again - Said Queen and attack\n", k.Kingdom().GetKingdom())
 }
 
 type Knight struct {
 	c *Character
+	k Kingdom
+}
+
+func (k *Knight) Kingdom() Kingdom {
+	return k.k
 }
 
 func (k *Knight) GetCharacter() *Character {
@@ -127,15 +141,20 @@ func (k *Knight) Upgrade() {
 }
 
 func (k *Knight) Protect() {
-	fmt.Printf("God save %v - said Knight and protect his Homeland\n", k.c.Kingdom.GetKingdom())
+	fmt.Printf("God save %v - said Knight and protect his Homeland\n", k.Kingdom().GetKingdom())
 }
 
 func (k *Knight) Attack() {
-	fmt.Printf("God bless %v - said Knight and attack\n", k.c.Kingdom.GetKingdom())
+	fmt.Printf("God bless %v - said Knight and attack\n", k.Kingdom().GetKingdom())
 }
 
 type HandOfKing struct {
 	c *Character
+	k Kingdom
+}
+
+func (k *HandOfKing) Kingdom() Kingdom {
+	return k.k
 }
 
 func (k *HandOfKing) GetCharacter() *Character {

@@ -4,7 +4,6 @@ import "fmt"
 
 type Character struct {
 	Name                                   string
-	Kingdom                                Kingdom
 	Power, Dexterity, Reaction, Protection int
 }
 
@@ -18,12 +17,6 @@ func (b *CharBuilder) Build() *Character {
 
 func (b *CharBuilder) Name(name string) *CharBuilder {
 	b.c.Name = name
-	return b
-}
-
-func (b *CharBuilder) LiveIn(k Kingdom) *CharBuilder {
-	b.c.Kingdom = k
-	fmt.Println(b.c.Kingdom.GetKingdom())
 	return b
 }
 
@@ -58,17 +51,24 @@ func (c *Character) String() string {
 	return fmt.Sprintf("%v with Power: %v, With Dexterity %v, With Reaction %v, With Protection %v",
 		c.Name, c.Power, c.Dexterity, c.Reaction, c.Protection)
 }
-func Build(name string, kingdom Kingdom) *Character{
+func Build(name string) *Character{
 	c := NewCharBuilder()
 	c.Name(name).
-		LiveIn(kingdom).
 		WithPower(50).
 		WithDexterity(50).
 		WithProtection(50).
 		WithReaction(50)
 	return c.Build()
 }
-
+func Read(name string, p int, d int, pr int, r int) *Character{
+	c := NewCharBuilder()
+	c.Name(name).
+		WithPower(p).
+		WithDexterity(d).
+		WithProtection(pr).
+		WithReaction(r)
+	return c.Build()
+}
 
 func NewCharBuilder() *CharBuilder {
 	return &CharBuilder{&Character{}}

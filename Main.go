@@ -29,10 +29,11 @@ func main() {
 	case 7:
 		k = &SeventhKingdom{}
 	}
+
 	copy(sl[choose-1:], sl[choose:])
 	sl[len(sl)-1] = nil
 	sl = sl[:len(sl)-1]
-	ch := Build(name, k)
+	ch := Build(name)
 	fmt.Println("Choose your character:\n 1-King\n 2-Queen\n" +
 					" 3-Knight\n 4-HandOfKing")
 
@@ -40,13 +41,13 @@ func main() {
 	var char iCharacter
 	switch choose {
 	case 1:
-		char = &King{ch}
+		char = &King{ch, k}
 	case 2:
-		char = &Queen{ch}
+		char = &Queen{ch, k}
 	case 3:
-		char = &Knight{ch}
+		char = &Knight{ch, k}
 	case 4:
-		char = &HandOfKing{ch}
+		char = &HandOfKing{ch, k}
 	}
 	l7 := &Level7{}
 	l6 := &Level6{}
