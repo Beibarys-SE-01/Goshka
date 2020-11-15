@@ -5,10 +5,10 @@ import "fmt"
 func main() {
 	listOfWinners := listOfWinners{subscribers: []Observer{}}
 
-	listOfWinners.register(Build("John Snow", &ThirdKingdom{}))
-	listOfWinners.register(Build("Tomiris", &SecondKingdom{}))
-	listOfWinners.register(Build("Zhansaya", &SeventhKingdom{}))
-	listOfWinners.register(Build("Beibarys", &FirstKingdom{}))
+	listOfWinners.register(Build("John Snow"))
+	listOfWinners.register(Build("Tomiris"))
+	listOfWinners.register(Build("Zhansaya"))
+	listOfWinners.register(Build("Beibarys"))
 
 	fmt.Println("Enter your name")
 	var name string
