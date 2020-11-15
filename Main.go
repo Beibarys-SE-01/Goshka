@@ -3,6 +3,13 @@ package main
 import "fmt"
 
 func main() {
+	listOfWinners := listOfWinners{subscribers: []Observer{}}
+
+	listOfWinners.register(Build("John Snow", &ThirdKingdom{}))
+	listOfWinners.register(Build("Tomiris", &SecondKingdom{}))
+	listOfWinners.register(Build("Zhansaya", &SeventhKingdom{}))
+	listOfWinners.register(Build("Beibarys", &FirstKingdom{}))
+
 	fmt.Println("Enter your name")
 	var name string
 	fmt.Scan(&name)
@@ -62,11 +69,11 @@ func main() {
 	l3.NextLevel(l4)
 	l2.NextLevel(l3)
 	l1.NextLevel(l2)
-	fmt.Println(sl)
 	if l1.LevelUp(char, sl) {
-		fmt.Println("Congratulations you are winner")
+		fmt.Println("\nCongratulations you are winner\n")
+		listOfWinners.notifyAll(char)
 	} else {
-		fmt.Println("Game over. You are dead")
+		fmt.Println("\nGame over. You are dead")
 	}
 }
 
